@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Button Console Log</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+      flex-direction: column;
+      gap: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <button id="myButtonCheck">Check access to adobeDataLayer (check Console)</button>
+  <button id="myButton">Dummy with Commerce</button>
+  <button id="myButton1">Dummy Download (no Commerce)</button>
+
+  <script>
+    document.getElementById('myButtonCheck').addEventListener('click', () => {
+      window.parent.console.log('Checking if iFrame have access to `window.parent.adobeDataLayer`', !!window.parent.adobeDataLayer, window.parent.adobeDataLayer);
+      window.parent.console.log('Checking if iFrame have access to `window.adobeDataLayer`', !!window.adobeDataLayer, window.adobeDataLayer);
+    });
+
+    document.getElementById('myButton').addEventListener('click', () => {
+      window.parent.postMessage({
+        message: 'raqn:analytics:external',
+        params: {
+            event: "testEventWithCommerce",
+            commerce: { "test": true},
+            extra: {
+                "info": "extra custom object"
+            }
+        }
+        }, '*');
+
+      setTimeout(() => {
+        window.parent.console.log(window.parent.adobeDataLayer);
+      }, 100);
+    });
+
+    document.getElementById('myButton1').addEventListener('click', () => {
+      window.parent.postMessage({
+        message: 'raqn:analytics:external',
+        params: {
+            event: 'fileDownload',
+            _henkel: {
+              file: {
+                  name: 'file name',
+                  format: 'pdf',
+                  displayText: 'Download colour code PDF'
+                }
+              }
+        }
+      }, '*');
+
+      setTimeout(() => {
+        window.parent.console.log(window.parent.adobeDataLayer);
+      }, 100);
+    });
+  </script>
+</body>
+</html>
