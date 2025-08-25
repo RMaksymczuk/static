@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Button Console Log</title>
+  <title>Commerce Buttons - test</title>
   <style>
     body {
       font-family: sans-serif;
@@ -28,18 +28,13 @@
     }
   </style>
 </head>
+
 <body>
-  <!-- <button id="myButtonCheck">Check access to adobeDataLayer (check Console)</button> -->
-  <button id="myButton">Dummy with Commerce</button>
-  <button id="myButton1">Dummy Download (no Commerce)</button>
+  <button id="commerce_button">Dummy with Commerce</button>
+  <button id="download_button">Dummy Download (no Commerce)</button>
 
   <script>
-    // document.getElementById('myButtonCheck').addEventListener('click', () => {
-    //   window.parent.console.log('Checking if iFrame have access to `window.parent.adobeDataLayer`', !!window.parent.adobeDataLayer, window.parent.adobeDataLayer);
-    //   window.parent.console.log('Checking if iFrame have access to `window.adobeDataLayer`', !!window.adobeDataLayer, window.adobeDataLayer);
-    // });
-
-    document.getElementById('myButton').addEventListener('click', () => {
+    document.getElementById('commerce_button').addEventListener('click', () => {
       window.parent.postMessage({
         message: 'raqn:analytics:external',
         params: {
@@ -50,13 +45,9 @@
             }
         }
         }, '*');
-
-      // setTimeout(() => {
-      //   window.parent.console.log(window.parent.adobeDataLayer);
-      // }, 100);
     });
 
-    document.getElementById('myButton1').addEventListener('click', () => {
+    document.getElementById('download_button').addEventListener('click', () => {
       window.parent.postMessage({
         message: 'raqn:analytics:external',
         params: {
@@ -70,10 +61,6 @@
               }
         }
       }, '*');
-
-      // setTimeout(() => {
-      //   window.parent.console.log(window.parent.adobeDataLayer);
-      // }, 100);
     });
   </script>
 </body>
