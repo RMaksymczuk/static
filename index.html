@@ -29,15 +29,15 @@
   </style>
 </head>
 <body>
-  <button id="myButtonCheck">Check access to adobeDataLayer (check Console)</button>
+  <!-- <button id="myButtonCheck">Check access to adobeDataLayer (check Console)</button> -->
   <button id="myButton">Dummy with Commerce</button>
   <button id="myButton1">Dummy Download (no Commerce)</button>
 
   <script>
-    document.getElementById('myButtonCheck').addEventListener('click', () => {
-      window.parent.console.log('Checking if iFrame have access to `window.parent.adobeDataLayer`', !!window.parent.adobeDataLayer, window.parent.adobeDataLayer);
-      window.parent.console.log('Checking if iFrame have access to `window.adobeDataLayer`', !!window.adobeDataLayer, window.adobeDataLayer);
-    });
+    // document.getElementById('myButtonCheck').addEventListener('click', () => {
+    //   window.parent.console.log('Checking if iFrame have access to `window.parent.adobeDataLayer`', !!window.parent.adobeDataLayer, window.parent.adobeDataLayer);
+    //   window.parent.console.log('Checking if iFrame have access to `window.adobeDataLayer`', !!window.adobeDataLayer, window.adobeDataLayer);
+    // });
 
     document.getElementById('myButton').addEventListener('click', () => {
       window.parent.postMessage({
@@ -51,9 +51,9 @@
         }
         }, '*');
 
-      setTimeout(() => {
-        window.parent.console.log(window.parent.adobeDataLayer);
-      }, 100);
+      // setTimeout(() => {
+      //   window.parent.console.log(window.parent.adobeDataLayer);
+      // }, 100);
     });
 
     document.getElementById('myButton1').addEventListener('click', () => {
@@ -71,9 +71,9 @@
         }
       }, '*');
 
-      setTimeout(() => {
-        window.parent.console.log(window.parent.adobeDataLayer);
-      }, 100);
+      // setTimeout(() => {
+      //   window.parent.console.log(window.parent.adobeDataLayer);
+      // }, 100);
     });
   </script>
 </body>
