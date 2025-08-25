@@ -10,9 +10,11 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #f4f4f4;
       flex-direction: column;
       gap: 20px;
+    }
+    h1 {
+      filter: invert(100%);
     }
     button {
       padding: 10px 20px;
@@ -30,6 +32,8 @@
 </head>
 
 <body>
+  <h1>Test page for iFrame external postMessage communication of Events Tracking</h1>
+
   <button id="commerce_button">Add tracking event (commerce)</button>
   <button id="download_button">Add tracking event - download (no commerce)</button>
 
